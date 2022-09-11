@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 
+// Data stored as key-value pair
 const musicGenre = {
   Hiphop: [
     { name: "Lose Yourself", by: "Eminem", ratings: "9/10" },
@@ -22,18 +23,24 @@ const musicGenre = {
   ]
 };
 export default function App() {
-  const [selectedGenre, setGenre] = useState("Dubstep");
+  const [selectedGenre, setGenre] = useState("Hiphop");
+
+  //Genre selector
   function genreClickHandler(genre) {
     setGenre(genre);
   }
+
   return (
     <div className="App">
-      <h1>Good music🎵</h1>
+      <h1>
+        Good musics<span role="img">🎵</span>
+      </h1>
       <p style={{ fontSize: "smaller" }}>
         Check out my favourite music from each genre.
       </p>
 
       <div>
+        {/* Setting up genre keys */}
         {Object.keys(musicGenre).map((genre) => (
           <button
             onClick={() => genreClickHandler(genre)}
@@ -51,10 +58,11 @@ export default function App() {
         ))}
       </div>
       <hr />
+      {/* Unordered list for setting up music  */}
       <ul style={{ paddingInlineStart: "0", textAlign: "left" }}>
         {musicGenre[selectedGenre].map((music) => (
           <li
-            key={music.name}
+            // key={music.name}
             style={{
               listStyle: "none",
               padding: "1rem",
